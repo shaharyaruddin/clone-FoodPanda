@@ -1,20 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import Navbar from "./Components/Navbar";
 
-function page() {
+export default function page() {
   return (
     <>
-      <div>
-        <Link href="home">Home</Link>
-      </div>
-      <div>
-        <Link href="servicess">Services</Link>
-      </div>
-      <div>
-        <Link href="contact">Contact</Link>
-      </div>
+    <Navbar />
     </>
   );
 }
 
-export default page;
