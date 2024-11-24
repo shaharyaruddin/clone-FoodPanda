@@ -5,27 +5,24 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 
 const SectionHero = () => {
   return (
-    <div className="flex justify-between items-center bg-[#F7F7F7]">
+    <div className="flex flex-col lg:flex-row justify-between items-center bg-[#F7F7F7] p-4 lg:p-12">
       {/* Left Content */}
-      <div className="flex flex-col justify-start items-start ml-12 space-y-6">
-        {/* Heading */}
-        <p className="text-4xl font-bold pb-5">
+      <div className="flex flex-col justify-start items-start space-y-4 lg:space-y-6 w-full lg:w-1/2">
+        <p className="text-2xl lg:text-4xl font-bold pb-4">
           It's the food and groceries you love, delivered
         </p>
 
-        {/* Input Field with Buttons */}
-        <div className="w-full max-w-2xl border-2 rounded-lg bg-white p-3 relative flex items-center">
-         <div className="w-full">
-          <input
-            type="text"
-            placeholder="Your Street and Street Number"
-            className="p-2 border outline-none rounded-lg pr-44"
-          />
-          {/* Locate me inside the input */}
-          <div className="absolute top-1/2 right-36 transform -translate-y-1/2 flex items-center space-x-2 text-sm font-medium text-gray-600 cursor-pointer">
-            <FaLocationCrosshairs className="text-2xl text-pink-600" />
-            <span>Locate me</span>
-          </div>
+        <div className="w-full border-2 rounded-lg bg-white p-3 relative flex items-center">
+          <div className="w-full">
+            <input
+              type="text"
+              placeholder="Your Street and Street Number"
+              className="p-2 border outline-none rounded-lg w-full lg:pr-44"
+            />
+            <div className="absolute top-1/2 right-36 lg:right-48 transform -translate-y-1/2 flex items-center space-x-2 text-sm font-medium text-gray-600 cursor-pointer">
+              <FaLocationCrosshairs className="text-2xl text-pink-600" />
+              <span>Locate me</span>
+            </div>
           </div>
           <div className="flex items-center">
             <button className="absolute right-4 bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition">
@@ -36,8 +33,13 @@ const SectionHero = () => {
       </div>
 
       {/* Right Image */}
-      <div className="flex justify-end">
-        <Image src={hero} alt="Hero Image" width={1500} className="-mr-80" />
+      <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0">
+        <Image
+          src={hero}
+          alt="Hero Image"
+          className="w-full h-auto max-w-md sm:max-w-lg lg:max-w-none"
+          priority
+        />
       </div>
     </div>
   );
