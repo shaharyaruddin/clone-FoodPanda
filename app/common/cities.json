@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Karachi",
+    "image": "/assets/cities/karachi.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Lahore",
+    "image": "/assets/cities/lahore.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Islamabad",
+    "image": "/assets/cities/islamabad.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Rawalpindi",
+    "image": "/assets/cities/rawalpindi.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Faisalabad",
+    "image": "/assets/cities/faislabad.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "Peshawar",
+    "image": "/assets/cities/peshawar.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Quetta",
+    "image": "/assets/cities/quetta.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Multan",
+    "image": "/assets/cities/multan.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Hyderabad",
+    "image": "/assets/cities/hyderabad.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Sialkot",
+    "image": "/assets/cities/sialkot.jpg"
+  }
+]
