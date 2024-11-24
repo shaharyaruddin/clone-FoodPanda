@@ -1,12 +1,13 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
 import SectionHero from "./Sections/SectionHero";
+import PageWrapper from "./Components/PageWrapper";
 
 export default function page() {
   return (
     <>
-      <Navbar />
-      <SectionHero />
+      <PageWrapper>
+        <SectionHero />
+      </PageWrapper>
     </>
   );
 }
