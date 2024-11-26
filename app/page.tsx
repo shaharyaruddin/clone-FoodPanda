@@ -5,6 +5,7 @@ import SectionPrepareFood from "./Sections/SectionPrepareFood";
 import SectionCity from "./Sections/SectionCity";
 import homeVendor from "../public/assets/Images/home-vendor.jpg";
 import homeCorporate from "../public/assets/Images/home-corporate.jpg";
+import SectionFaq from "./Sections/SectionFaq";
 export default function page() {
   return (
     <>
@@ -27,6 +28,7 @@ export default function page() {
           modalContent="Order lunch or fuel for work-from-home, late nights in the office, corporate events, client meetings, and much more."
           buttonText="Get Started"
         />
+        <SectionFaq />
       </PageWrapper>
     </>
   );
