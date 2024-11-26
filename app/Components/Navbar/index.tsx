@@ -14,12 +14,18 @@ import {
   IoHelpCircleOutline,
   IoTrophyOutline,
 } from "react-icons/io5";
+import Modal from "../Modal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleModal = () => {
+    setModalOpen(!modalOpen);
   };
 
   return (
@@ -34,10 +40,17 @@ const Navbar = () => {
         <div>
           <div className="flex items-center gap-3">
             <div className="hidden md:flex gap-4 ">
-              <button className="border border-black px-2 py-1 text-sm rounded-md hover:py-[5px] hover:bg-gray-100">
+              {modalOpen && <Modal open={modalOpen} setOpen={setModalOpen} />}
+              <button
+                className="border border-black px-2 py-1 text-sm rounded-md hover:py-[5px] hover:bg-gray-100"
+                onClick={handleModal}
+              >
                 Log In
               </button>
-              <button className=" px-2 py-1 text-[14px] rounded-md bg-[#e21b70] text-white hover:py-[5px] hover:bg-[#b8316b]">
+              <button
+                className=" px-2 py-1 text-[14px] rounded-md bg-[#e21b70] text-white hover:py-[5px] hover:bg-[#b8316b]"
+                onClick={handleModal}
+              >
                 Sign Up
               </button>
               <div className="relative">

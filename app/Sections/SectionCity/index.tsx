@@ -21,9 +21,11 @@ function SectionCity() {
                 <Image
                   src={city.image}
                   alt={city.name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
                   className="rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw" // Adjust based on your layout
+                  style={{objectFit:"cover"}}
+
                 />
               </div>
               <div className="absolute bottom-2 left-2 rounded-lg bg-white p-2">

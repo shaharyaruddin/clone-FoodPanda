@@ -38,7 +38,6 @@ const SectionHero = () => {
           src={hero}
           alt="Hero Image"
           className="w-full h-auto max-w-md sm:max-w-lg lg:max-w-none"
-          priority
         />
       </div>
     </div>
