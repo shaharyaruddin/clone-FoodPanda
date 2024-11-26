@@ -6,13 +6,14 @@ import SectionCity from "./Sections/SectionCity";
 import homeVendor from "../public/assets/Images/home-vendor.jpg";
 import homeCorporate from "../public/assets/Images/home-corporate.jpg";
 import SectionFaq from "./Sections/SectionFaq";
+import SectionMobileApps from "./Sections/SectionMobileApps";
 export default function page() {
   return (
     <>
       <PageWrapper>
         <SectionHero />
         <SectionPrepareFood
-          heading="You prepare the food, we handle the rest sherry"
+          heading="You prepare the food, we handle the rest"
           image={homeVendor}
           alt="home vendor"
           modalHeading="List your restaurant or shop on foodpanda"
@@ -20,6 +21,7 @@ export default function page() {
           buttonText="Get Started"
         />
         <SectionCity />
+        <SectionMobileApps />
         <SectionPrepareFood
           heading="Take your office out to lunch"
           image={homeCorporate}
