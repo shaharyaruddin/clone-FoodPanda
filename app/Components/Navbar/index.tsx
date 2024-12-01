@@ -29,7 +29,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="border border-b bg-white shadow-sm fixed w-full  left-0 z-50">
+    <div className="border border-b bg-white shadow-sm fixed w-full left-0 z-50">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex items-center justify-between">
         <div className="flex md:hidden hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
           <HiOutlineUser className=" text-black" size={18} />
