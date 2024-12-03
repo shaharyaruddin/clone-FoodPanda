@@ -1,20 +1,15 @@
 import { useState } from "react";
 import BaseText from "../BaseText";
-import { FaFacebook, FaEnvelopeOpen } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { IoIosCloseCircleOutline, IoIosArrowRoundBack } from "react-icons/io";
-import { RiLock2Fill } from "react-icons/ri";
+import UserForm from "../UserForm";
 
-export default function Example({ open, setOpen }: any) {
-  const [login, setLogin] = useState(false);
-  const [continueBtn, setContinueBtn] = useState(false);
+export default function Modal({ open, setOpen }: any) {
+  const [form, setForm] = useState(false);
 
   const handleLogin = () => {
-    setLogin(true);
-  };
-
-  const handleContinue = () => {
-    setContinueBtn(true);
+    setForm(true);
   };
 
   const handleOutsideClick = (e: any) => {
@@ -43,7 +38,7 @@ export default function Example({ open, setOpen }: any) {
             >
               <IoIosCloseCircleOutline size={30} />
             </div>
-            {login && (
+            {form && (
               <div
                 className="absolute top-2 left-3 text-gray-500 hover:text-gray-600 transition duration-200 text-2xl cursor-pointer"
                 onClick={() => {
@@ -55,8 +50,7 @@ export default function Example({ open, setOpen }: any) {
             )}
           </div>
 
-          {/* Header */}
-          {!login && (
+          {!form && (
             <>
               <div>
                 <BaseText size="text-2xl" weight="font-semibold">
@@ -118,63 +112,7 @@ export default function Example({ open, setOpen }: any) {
               </div>
             </>
           )}
-          {login && !continueBtn && (
-            <>
-              <div className="mt-10">
-                <FaEnvelopeOpen size={50} color="#e21b70" />
-              </div>
-              <div className="flex flex-col mt-5">
-                <BaseText size="text-2xl" weight="font-semibold">
-                  What's your email?
-                </BaseText>
-                <BaseText size="text-sm" color="text-gray-600">
-                  We'll check if you have an account
-                </BaseText>
-              </div>
-              <div className="flex flex-col gap-5 mt-5">
-                <input
-                  type="email"
-                  className="w-full px-4 py-2 outline-none border border-gray-300 rounded-md"
-                  placeholder="Email"
-                />
-
-                <button
-                  onClick={handleContinue}
-                  className="justify-center border border-black w-full px-4 py-3 text-sm font-medium text-gray-900 rounded-md  hover:bg-gray-200"
-                >
-                  Continue
-                </button>
-              </div>
-            </>
-          )}
-          {continueBtn && (
-            <>
-              <div>
-                <div className="mt-10">
-                  <RiLock2Fill size={50} color="#e21b70" />
-                </div>
-                <div className="flex flex-col mt-5">
-                  <BaseText size="text-2xl" weight="font-semibold">
-                    Welcome back!
-                  </BaseText>
-                  <BaseText size="text-sm" color="text-gray-600">
-                    Log in by typing your password.
-                  </BaseText>
-                </div>
-                <div className="flex flex-col gap-5 mt-5">
-                  <input
-                    type="password"
-                    className="w-full px-4 py-2 outline-none border border-gray-300 rounded-md"
-                    placeholder="Password"
-                  />
-
-                  <button className="justify-center border border-black w-full px-4 py-3 text-sm font-medium text-gray-900 rounded-md  hover:bg-gray-200">
-                    Login in with Password
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
+          {form && <UserForm />}
         </div>
       </div>
     )
