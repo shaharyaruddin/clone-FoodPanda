@@ -24,8 +24,8 @@ const SectionHero = () => {
               <span>Locate me</span>
             </div>
           </div>
-          <div className="flex items-center">
-            <button className="absolute right-4 bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition">
+          <div>
+            <button className="absolute right-0 md:right-4 bottom-0 md:bottom-auto top-5 md:top-auto bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition w-full md:w-auto">
               Find Food
             </button>
           </div>

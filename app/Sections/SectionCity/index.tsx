@@ -1,6 +1,7 @@
 import React from "react";
 import cities from "../../common/cities.json";
 import Image from "next/image";
+import Link from "next/link";
 
 function SectionCity() {
   return (
@@ -18,15 +19,16 @@ function SectionCity() {
               className="relative bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="relative w-full h-56 hover:-translate-y-1 hover:scale-105 duration-300 cursor-pointer">
-                <Image
-                  src={city.image}
-                  alt={city.name}
-                  fill
-                  className="rounded-lg"
-                  sizes="(max-width: 768px) 100vw, 50vw" // Adjust based on your layout
-                  style={{objectFit:"cover"}}
-
-                />
+                <Link href="/city">
+                  <Image
+                    src={city.image}
+                    alt={city.name}
+                    fill
+                    className="rounded-lg"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </Link>
               </div>
               <div className="absolute bottom-2 left-2 rounded-lg bg-white p-2">
                 <h3 className="text-md font-medium text-black">{city.name}</h3>
