@@ -19,7 +19,7 @@ function SectionCity() {
               className="relative bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="relative w-full h-56 hover:-translate-y-1 hover:scale-105 duration-300 cursor-pointer">
-                <Link href="/city">
+                <Link href={`/city${city.href}`}>
                   <Image
                     src={city.image}
                     alt={city.name}
