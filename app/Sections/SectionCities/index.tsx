@@ -1,78 +1,84 @@
-'use client'
+"use client";
 import BaseText from "@/app/Components/BaseText";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const API_URL = "https://dummyjson.com/recipes";
 
 const SectionCities = () => {
+  const [data, setData] = useState([]);
 
-const [data,setData] =useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await fetch(API_URL);
+        const res = await data.json();
+        setData(res.recipes);
+      } catch (error) {
+        console.log("Error Fetching data", error);
+      }
+    };
+    getData();
+  }, []);
 
-  const getData = async () => {
-    const data = await fetch("https://dummyjson.com/recipes");
-    const res = await data.json();
-
-setData(res.recipes)
-  };
-  getData();
   return (
-    <div className="mx-16 my-4">
-      <div className="flex items-center gap-2 text-gray-500 underline">
-        <div>Homepage</div>
+    <div className="mx-16 my-8">
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-gray-500 text-sm">
+        <span className="hover:underline">Homepage</span>
         <span>&gt;</span>
-        <div>Islamabad</div>
+        <span className="text-black font-semibold">Karachi</span>
       </div>
 
-      <div className="mt-2">
-        <BaseText size="text-2xl" additionalClasses="" weight="font-semibold">
-          Top Areas in Islamabad
-        </BaseText>
-      </div>
-
-      <div className="mt-4 flex items-center gap-4">
-        <select className="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:border-gray-500 focus:ring-1 focus:ring-gray-500">
-          <option value="">Select an area</option>
-          {/* Add more options here */}
-        </select>
-
-        <button className="whitespace-nowrap rounded-lg border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100 focus:ring-1 focus:ring-gray-500">
-          See all areas
-        </button>
-      </div>
-
-      <div className="mt-10">
-        <BaseText size="text-2xl" weight="font-semibold">
+      {/* Section Header */}
+      <div className="mt-4">
+        <BaseText size="text-3xl" additionalClasses="" weight="font-bold">
           All restaurants
         </BaseText>
       </div>
 
+      {/* Restaurants Grid */}
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data?.length > 0 ? (
           data.map((item: any) => (
             <div
               key={item.id}
-              className="flex flex-col items-center rounded-lg border border-gray-200 p-4 shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
+              className="flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
             >
-              <Image
-                src={item.image}
-                alt={item.name}
-                className="w-full rounded-lg"
-                width={200}
-                height={200}
-                // objectFit="contain"
-              />
-              <div className="mt-3 flex flex-row w-full items-center justify-between">
-                <p className=" text-gray-800 font-bold">{item.name}</p>
-                <p className="text-sm font-semibold text-gray-600">
-                  {item.rating} ⭐
-                </p>
+              {/* Image */}
+              <div className="relative">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-40 object-cover"
+                  width={400}
+                  height={200}
+                />
+                {/* Badges */}
+                <div className="absolute top-2 left-2 space-y-1">
+                  <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
+                    Up to 10% off
+                  </span>
+                  <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
+                    Welcome gift: free delivery
+                  </span>
+                </div>
               </div>
-              <div className="flex justify-start w-full text-sm">
-                <p>{item.name}</p>
+
+              {/* Details */}
+              <div className="p-4">
+                <div className="flex justify-between items-center">
+                  <p className="font-bold text-gray-800">{item.name}</p>
+                  <p className="text-sm font-semibold text-orange-500">
+                    {item.rating} ⭐
+                  </p>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">{item.category}</p>
               </div>
             </div>
           ))
         ) : (
-          <p>Loading...</p>
+          <p className="text-center text-gray-500">Loading...</p>
         )}
       </div>
     </div>

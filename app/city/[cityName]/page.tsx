@@ -9,7 +9,7 @@ const page = () => {
     <PageWrapper>
       <SectionHero />
       <SectionCities  />
-      {/* <SectionFaq /> */}
+      <SectionFaq />
     </PageWrapper>
   );
 };
