@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const API_URL = "https://dummyjson.com/recipes";
 
-const SectionCities = ({ params }: any) => {
+const SectionCities = ({ params }: {params? : string}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -22,13 +22,17 @@ const SectionCities = ({ params }: any) => {
     getData();
   }, []);
 
+  const formattedParams = params
+  ? params.charAt(0).toUpperCase() + params.slice(1).toLowerCase()
+  : "Unknown";
+
   return (
     <div className="mx-16 my-8">
       <div className="flex items-center gap-2 text-gray-500 text-sm">
         <span className="hover:underline">Homepage</span>
         <span>&gt;</span>
         <span className="text-black font-semibold">
-          {params.charAt(0).toUpperCase() + params.slice(1).toLowerCase()}
+{formattedParams}
           {/* e.g : multan
           params.charAt(0).toUpperCase() =M
           params.slice(1).toLowerCase() = ultan 
