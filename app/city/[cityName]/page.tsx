@@ -1,5 +1,3 @@
-"use client";
-
 import PageWrapper from "@/app/Components/PageWrapper";
 import SectionCities from "@/app/Sections/SectionCities";
 import SectionFaq from "@/app/Sections/SectionFaq";
@@ -11,7 +9,7 @@ const page = () => {
     <PageWrapper>
       <SectionHero />
       <SectionCities  />
-      <SectionFaq />
+      {/* <SectionFaq /> */}
     </PageWrapper>
   );
 };

@@ -1,3 +1,4 @@
+'use client'
 import BaseText from "@/app/Components/BaseText";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -10,7 +11,6 @@ const [data,setData] =useState([])
     const data = await fetch("https://dummyjson.com/recipes");
     const res = await data.json();
 
-    console.log("Data in the component:", res.recipes); // This will show in the browser console
 setData(res.recipes)
   };
   getData();
@@ -58,7 +58,7 @@ setData(res.recipes)
                 className="w-full rounded-lg"
                 width={200}
                 height={200}
-                objectFit="contain"
+                // objectFit="contain"
               />
               <div className="mt-3 flex flex-row w-full items-center justify-between">
                 <p className=" text-gray-800 font-bold">{item.name}</p>
