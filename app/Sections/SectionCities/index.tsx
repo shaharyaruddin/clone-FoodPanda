@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const API_URL = "https://dummyjson.com/recipes";
 
-const SectionCities = () => {
+const SectionCities = ({ params }: any) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const SectionCities = () => {
       try {
         const data = await fetch(API_URL);
         const res = await data.json();
+        // console.log(res.recipes);
         setData(res.recipes);
       } catch (error) {
         console.log("Error Fetching data", error);
@@ -23,21 +24,24 @@ const SectionCities = () => {
 
   return (
     <div className="mx-16 my-8">
-      {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-gray-500 text-sm">
         <span className="hover:underline">Homepage</span>
         <span>&gt;</span>
-        <span className="text-black font-semibold">Karachi</span>
+        <span className="text-black font-semibold">
+          {params.charAt(0).toUpperCase() + params.slice(1).toLowerCase()}
+          {/* e.g : multan
+          params.charAt(0).toUpperCase() =M
+          params.slice(1).toLowerCase() = ultan 
+          First word capital rest are small by using this logic */}
+        </span>
       </div>
 
-      {/* Section Header */}
       <div className="mt-4">
         <BaseText size="text-3xl" additionalClasses="" weight="font-bold">
           All restaurants
         </BaseText>
       </div>
 
-      {/* Restaurants Grid */}
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data?.length > 0 ? (
           data.map((item: any) => (
@@ -45,7 +49,6 @@ const SectionCities = () => {
               key={item.id}
               className="flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
             >
-              {/* Image */}
               <div className="relative">
                 <Image
                   src={item.image}
@@ -57,7 +60,7 @@ const SectionCities = () => {
                 {/* Badges */}
                 <div className="absolute top-2 left-2 space-y-1">
                   <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
-                    Up to 10% off
+                    Up to {item.cookTimeMinutes}% off
                   </span>
                   <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
                     Welcome gift: free delivery
@@ -65,7 +68,6 @@ const SectionCities = () => {
                 </div>
               </div>
 
-              {/* Details */}
               <div className="p-4">
                 <div className="flex justify-between items-center">
                   <p className="font-bold text-gray-800">{item.name}</p>
