@@ -5,7 +5,7 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 
 const SectionHero = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center bg-[#F7F7F7] p-4 lg:p-12 mt-14">
+    <div className="flex flex-col lg:flex-row justify-between items-center bg-[#F7F7F7] p-4 lg:p-12">
       {/* Left Content */}
       <div className="flex flex-col justify-start items-start space-y-4 lg:space-y-6 w-full lg:w-1/2">
         <p className="text-2xl lg:text-4xl font-bold pb-4">
