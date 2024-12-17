@@ -15,6 +15,7 @@ import {
   IoTrophyOutline,
 } from "react-icons/io5";
 import Modal from "../Modal";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,9 +35,9 @@ const Navbar = () => {
         <div className="flex md:hidden hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
           <HiOutlineUser className=" text-black" size={18} />
         </div>
-        <div>
+        <Link href={'/'}>
           <Image src={mainLogo} width={150} alt="main-logo" className="py-3" />
-        </div>
+        </Link>
         <div>
           <div className="flex items-center gap-3">
             <div className="hidden md:flex gap-4 ">
