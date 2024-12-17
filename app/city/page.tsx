@@ -3,8 +3,8 @@ import PageWrapper from "../Components/PageWrapper";
 import Image from "next/image";
 import AllCityImage from "../../public/assets/all-cities-image.jpg";
 import BaseText from "../Components/BaseText";
-import cities from "../common/cities.json";
 import Link from "next/link";
+import { cityList } from "../common/cities";
 
 function City() {
   return (
@@ -29,7 +29,7 @@ function City() {
           Top Cities in Pakistan
         </BaseText>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-6">
-          {cities.map((city: any) => {
+          {cityList.map((city: any) => {
             return (
               <Link href={`city/${city.name}`} key={city.name}>
                 <div className="group cursor-pointer transition-all duration-300">
