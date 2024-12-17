@@ -1,4 +1,4 @@
-[
+  export const cityList=[
   {
     "id": 1,
     "name": "Karachi",

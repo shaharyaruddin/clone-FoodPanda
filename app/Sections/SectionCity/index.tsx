@@ -1,5 +1,5 @@
 import React from "react";
-import cities from "../../common/cities.json";
+import { cityList } from "../../common/cities";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ function SectionCity() {
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {cities.map((city) => (
+          {cityList.map((city) => (
             <div
               key={city.id}
               className="relative bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
