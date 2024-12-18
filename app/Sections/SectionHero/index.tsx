@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import hero from "../../../public/assets/Images/hero.jpg";
 import { FaLocationCrosshairs } from "react-icons/fa6";
+import LocationModal from "@/app/modal/locationModal";
 
 const SectionHero = () => {
+  const handleModal = () => {
+    return <LocationModal />;
+  };
+
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center bg-[#F7F7F7] p-4 lg:p-12">
       {/* Left Content */}
@@ -25,7 +31,10 @@ const SectionHero = () => {
             </div>
           </div>
           <div>
-            <button className="absolute right-0 md:right-4 bottom-0 md:bottom-auto top-5 md:top-auto bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition w-full md:w-auto">
+            <button
+              className="md:-mt-5 absolute right-0 md:right-4 bottom-0 md:bottom-auto top-5 md:top-auto bg-pink-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-700 transition w-full md:w-auto"
+              onClick={handleModal}
+            >
               Find Food
             </button>
           </div>

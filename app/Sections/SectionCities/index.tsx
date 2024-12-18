@@ -1,5 +1,6 @@
 "use client";
 import BaseText from "@/app/Components/BaseText";
+import { capitalizedFirst } from "@/app/helper";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -22,17 +23,14 @@ const SectionCities = ({ params }: { params?: string }) => {
     getData();
   }, []);
 
-  const formattedParams = params
-    ? params.charAt(0).toUpperCase() + params.slice(1).toLowerCase()
-    : "Unknown";
-
   return (
     <div className="mx-16 my-8">
       <div className="flex items-center gap-2 text-gray-500 text-sm">
         <span className="hover:underline">Homepage</span>
         <span>&gt;</span>
         <span className="text-black font-semibold">
-          {formattedParams}
+        
+          {params ? capitalizedFirst(params) : "Unknown"}
           {/* e.g : multan
           params.charAt(0).toUpperCase() =M
           params.slice(1).toLowerCase() = ultan 
