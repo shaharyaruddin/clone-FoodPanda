@@ -1,6 +1,8 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import BaseText from "@/app/Components/BaseText";
+import { useRouter } from "next/navigation";
 
 interface SectionPrepareFoodProps {
   heading: string;
@@ -19,6 +21,9 @@ function SectionPrepareFood({
   modalContent,
   buttonText,
 }: SectionPrepareFoodProps) {
+
+  const router = useRouter();
+
   return (
     <div className="relative mb-36">
       <div className="ml-2 md:ml-10 py-8">
@@ -50,6 +55,7 @@ function SectionPrepareFood({
 
         <div className="mt-4 flex justify-end">
           <button
+            onClick={() => router.push("partner-foodpanda")}
             className="bg-pink-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg shadow-md 
             hover:bg-pink-700 transition duration-200 ease-in-out text-sm sm:text-base"
           >
