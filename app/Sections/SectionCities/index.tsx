@@ -23,6 +23,10 @@ const SectionCities = ({ params }: { params?: string }) => {
     getData();
   }, []);
 
+  const searchingData = data.filter((item: any) =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8">
       <div className="flex items-center gap-2 text-gray-500 text-sm">
@@ -55,11 +59,8 @@ const SectionCities = ({ params }: { params?: string }) => {
 
       <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data?.length > 0 ? (
-          data
-            .filter((item: any) =>
-              item.name.toLowerCase().includes(query.toLowerCase())
-            )
-            .map((item: any) => (
+          searchingData.length > 0 ? (
+            searchingData.map((item: any) => (
               <div
                 key={item.id}
                 className="flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
@@ -94,6 +95,9 @@ const SectionCities = ({ params }: { params?: string }) => {
                 </div>
               </div>
             ))
+          ) : (
+            <p className="text-gray-500">No item Found</p>
+          )
         ) : (
           <p className="text-center text-gray-500">Loading...</p>
         )}
