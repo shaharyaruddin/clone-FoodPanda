@@ -3,6 +3,7 @@ import BaseText from "@/app/Components/BaseText";
 import { capitalizedFirst } from "@/app/helper";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { CiHeart } from "react-icons/ci";
 
 const API_URL = "https://dummyjson.com/recipes";
 
@@ -63,7 +64,7 @@ const SectionCities = ({ params }: { params?: string }) => {
             searchingData.map((item: any) => (
               <div
                 key={item.id}
-                className="flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
+                className="relative flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
               >
                 <div className="relative">
                   <Image
@@ -82,6 +83,9 @@ const SectionCities = ({ params }: { params?: string }) => {
                       Welcome gift: free delivery
                     </span>
                   </div>
+                </div>
+                <div className="absolute right-3 top-2 bg-white rounded-full p-1">
+                  <CiHeart size={16} />
                 </div>
 
                 <div className="p-4">
