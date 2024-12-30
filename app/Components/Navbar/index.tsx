@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import mainLogo from "../../../public/assets/main-logo.png";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { AiOutlineHeart } from "react-icons/ai";
 import { RiGlobalLine } from "react-icons/ri";
 import { HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi2";
 import { CiReceipt } from "react-icons/ci";
@@ -135,6 +136,11 @@ const Navbar = () => {
               )}
             </div> */}
             </div>
+            <Link href={'/favorites'}>
+            <div className="hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+              <AiOutlineHeart  size={22} />
+            </div>
+            </Link>
             <div className="hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
               <HiOutlineShoppingBag size={20} />
             </div>

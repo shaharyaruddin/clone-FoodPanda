@@ -1,14 +1,18 @@
 "use client";
-import BaseText from "@/app/Components/BaseText";
-import { capitalizedFirst } from "@/app/helper";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import BaseText from "@/app/Components/BaseText";
+import Image from "next/image";
+import { capitalizedFirst } from "@/app/helper";
+import { CiHeart } from "react-icons/ci";
+import { useDispatch } from "react-redux";
+import { addFavorites } from "@/app/redux/slices/favouriteSlice";
 
 const API_URL = "https://dummyjson.com/recipes";
 
 const SectionCities = ({ params }: { params?: string }) => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getData = async () => {
@@ -26,6 +30,13 @@ const SectionCities = ({ params }: { params?: string }) => {
   const searchingData = data.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
   );
+
+
+  const addToFavorites = (item : any)=>{
+    dispatch(addFavorites(item))
+    console.log('object')
+  }
+
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8">
@@ -63,7 +74,7 @@ const SectionCities = ({ params }: { params?: string }) => {
             searchingData.map((item: any) => (
               <div
                 key={item.id}
-                className="flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
+                className="relative flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
               >
                 <div className="relative">
                   <Image
@@ -82,6 +93,12 @@ const SectionCities = ({ params }: { params?: string }) => {
                       Welcome gift: free delivery
                     </span>
                   </div>
+                </div>
+                <div
+                  className="absolute right-3 top-2 bg-white rounded-full p-1 cursor-pointer"
+                  onClick={()=> addToFavorites(item)}
+                >
+                  <CiHeart size={16} />
                 </div>
 
                 <div className="p-4">

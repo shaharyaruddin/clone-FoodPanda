@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import Providerredux from "./redux/Provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,6 +35,7 @@ export default function RootLayout({
       >
         <NextTopLoader showSpinner={false} color="#1E40AF"/>
         {children}
+        <Providerredux>{children}</Providerredux>
       </body>
     </html>
   );
