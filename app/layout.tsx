@@ -34,7 +34,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextTopLoader showSpinner={false} color="#1E40AF"/>
-        {children}
         <Providerredux>{children}</Providerredux>
       </body>
     </html>
