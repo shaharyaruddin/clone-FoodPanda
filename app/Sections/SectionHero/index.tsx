@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import hero from "../../../public/assets/Images/hero.jpg";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import BaseText from "@/app/Components/BaseText";
-import Map from "@/app/map";
+// import Map from "@/app/map";
 
 const EndPoint = "https://api.opencagedata.com/geocode/v1/json";
 const API_key = "6ca84db96bc44949b610dcb7f8ef0fd4";
@@ -128,11 +128,11 @@ const SectionHero = () => {
                     />
                   </div>
 
-                  <div className="h-64 w-full overflow-hidden rounded-lg">
+                  {/* <div className="h-64 w-full overflow-hidden rounded-lg">
                   <Map
                    latitude={userLocation?.latitude}
                     longitude={userLocation?.longitude} />
-                  </div>
+                  </div> */}
 
                   <button
                     type="submit"
