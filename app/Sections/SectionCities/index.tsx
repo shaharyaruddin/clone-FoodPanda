@@ -4,8 +4,12 @@ import BaseText from "@/app/Components/BaseText";
 import Image from "next/image";
 import { capitalizedFirst } from "@/app/helper";
 import { CiHeart } from "react-icons/ci";
-import { useDispatch } from "react-redux";
-import { addFavorites } from "@/app/redux/slices/favouriteSlice";
+import { IoMdHeart } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addFavorites,
+  deleteFavorites,
+} from "@/app/redux/slices/favouriteSlice";
 
 const API_URL = "https://dummyjson.com/recipes";
 
@@ -13,6 +17,8 @@ const SectionCities = ({ params }: { params?: string }) => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+
+  const favorites = useSelector((state: any) => state.favorites.favoritesItem);
 
   useEffect(() => {
     const getData = async () => {
@@ -31,12 +37,8 @@ const SectionCities = ({ params }: { params?: string }) => {
     item.name.toLowerCase().includes(query.toLowerCase())
   );
 
-
-  const addToFavorites = (item : any)=>{
-    dispatch(addFavorites(item))
-    console.log('object')
-  }
-
+  const isFavorite = (item: any) =>
+    favorites.some((fav: any) => fav.id === item.id);
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8">
@@ -96,11 +98,21 @@ const SectionCities = ({ params }: { params?: string }) => {
                 </div>
                 <div
                   className="absolute right-3 top-2 bg-white rounded-full p-1 cursor-pointer"
-                  onClick={()=> addToFavorites(item)}
+                  onClick={() => {
+                    if (isFavorite(item)) {
+                      dispatch(deleteFavorites(item)); // Remove from favorites
+                    } else {
+                      dispatch(addFavorites(item)); // Add to favorites
+                    }
+                  }}
                 >
-                  <CiHeart size={16} />
+                  {/* Toggle icons based on favorite status */}
+                  {isFavorite(item) ? (
+                    <IoMdHeart size={16} /> 
+                  ) : (
+                    <CiHeart size={16} /> 
+                  )}
                 </div>
-
                 <div className="p-4">
                   <div className="flex justify-between items-center">
                     <p className="font-bold text-gray-800">{item.name}</p>

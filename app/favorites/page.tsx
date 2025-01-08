@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
-import { useSelector } from "react-redux";
-import BaseText from "../Components/BaseText";
-import { GiChainedHeart } from "react-icons/gi";
 import Navbar from "../Components/Navbar";
+import BaseText from "../Components/BaseText";
 import Image from "next/image";
+import { GiChainedHeart } from "react-icons/gi";
+import { IoMdHeart } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteFavorites } from "../redux/slices/favouriteSlice";
 
 function Favorites() {
+  const dispatch = useDispatch();
   const favoritesItem = useSelector(
     (state: any) => state.favorites.favoritesItem
   );
@@ -57,6 +60,12 @@ function Favorites() {
                       Welcome gift: free delivery
                     </span>
                   </div>
+                </div>
+                <div
+                  className="absolute right-0 top-2 bg-white rounded-full p-1 cursor-pointer"
+                  onClick={() => dispatch(deleteFavorites(item))}
+                >
+                  <IoMdHeart size={16} />
                 </div>
                 <div className="p-4">
                   <div className="flex justify-between items-center">
