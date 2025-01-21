@@ -141,9 +141,11 @@ const Navbar = () => {
               <AiOutlineHeart  size={22} />
             </div>
             </Link>
+            <Link href={'/cart-page'}>
             <div className="hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
               <HiOutlineShoppingBag size={20} />
             </div>
+            </Link>
           </div>
         </div>
       </div>

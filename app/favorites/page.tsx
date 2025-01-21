@@ -13,7 +13,6 @@ function Favorites() {
   const favoritesItem = useSelector(
     (state: any) => state.favorites.favoritesItem
   );
-  console.log(favoritesItem);
 
   return (
     <>

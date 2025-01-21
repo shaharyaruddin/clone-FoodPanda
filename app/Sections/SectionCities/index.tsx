@@ -10,6 +10,8 @@ import {
   addFavorites,
   deleteFavorites,
 } from "@/app/redux/slices/favouriteSlice";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { addItems } from "@/app/redux/slices/cartSlice";
 
 const API_URL = "https://dummyjson.com/recipes";
 
@@ -39,6 +41,15 @@ const SectionCities = ({ params }: { params?: string }) => {
 
   const isFavorite = (item: any) =>
     favorites.some((fav: any) => fav.id === item.id);
+  const addToFavorites = (item: any) => {
+    dispatch(addFavorites(item));
+    console.log("object");
+  };
+
+  const handleAddToCart = (item: any) => {
+    dispatch(addItems(item));
+    console.log('added items')
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8">
@@ -70,7 +81,7 @@ const SectionCities = ({ params }: { params?: string }) => {
         />
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data?.length > 0 ? (
           searchingData.length > 0 ? (
             searchingData.map((item: any) => (
@@ -121,6 +132,11 @@ const SectionCities = ({ params }: { params?: string }) => {
                     </p>
                   </div>
                   <p className="text-sm text-gray-600 mt-1">{item.category}</p>
+                </div>
+                <div className="absolute bottom-14 right-3">
+                  <button onClick={()=>handleAddToCart(item)}>
+                    <IoIosAddCircleOutline className="w-7 h-7 text-white font-bold" />
+                  </button>
                 </div>
               </div>
             ))
