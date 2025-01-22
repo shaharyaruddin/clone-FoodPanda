@@ -1,4 +1,3 @@
-
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
@@ -10,11 +9,21 @@ export const AddToCartSlice = createSlice({
   initialState,
   reducers: {
     addItems: (state: any, action: any) => {
-      state.addToCart.push(action.payload);
+      const found = state.addToCart.find(
+        (item: any) => item.id == action.payload.id
+      );
+      if (!found) {
+        state.addToCart.push(action.payload);
+      }
+    },
+    removeCart: (state: any, action: any) => {
+      state.addToCart = state.addToCart.filter(
+        (item: any) => item.id !== action.payload.id
+      );
     },
   },
 });
 
-export const { addItems } = AddToCartSlice.actions;
+export const { addItems, removeCart } = AddToCartSlice.actions;
 
 export default AddToCartSlice.reducer;

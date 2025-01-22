@@ -17,11 +17,18 @@ import {
 } from "react-icons/io5";
 import Modal from "../Modal";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const data = useSelector((state: any) => state.addToCart.addToCart);
+  const count = data.length;
+
+  const fav = useSelector((state: any) => state.favorites.favoritesItem);
+
+  const favouriteCount = fav.length;
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -36,7 +43,7 @@ const Navbar = () => {
         <div className="flex md:hidden hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
           <HiOutlineUser className=" text-black" size={18} />
         </div>
-        <Link href={'/'}>
+        <Link href={"/"}>
           <Image src={mainLogo} width={150} alt="main-logo" className="py-3" />
         </Link>
         <div>
@@ -136,15 +143,29 @@ const Navbar = () => {
               )}
             </div> */}
             </div>
-            <Link href={'/favorites'}>
-            <div className="hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
-              <AiOutlineHeart  size={22} />
-            </div>
+            <Link href={"/favorites"}>
+              <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+                <AiOutlineHeart size={22} />
+                {favouriteCount > 0 ? (
+                  <div className="absolute left-6 top-4 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
+                    {favouriteCount}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </Link>
-            <Link href={'/cart-page'}>
-            <div className="hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
-              <HiOutlineShoppingBag size={20} />
-            </div>
+            <Link href={"/cart-page"}>
+              <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+                <HiOutlineShoppingBag size={20} />
+                {count > 0 ? (
+                  <div className="absolute left-6 top-4 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
+                    {count}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </Link>
           </div>
         </div>

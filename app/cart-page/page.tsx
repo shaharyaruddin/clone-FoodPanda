@@ -2,20 +2,21 @@
 import React from "react";
 import PageWrapper from "../Components/PageWrapper";
 import Image from "next/image";
-import { CiHeart } from "react-icons/ci";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { useSelector } from "react-redux";
+import { IoIosAddCircleOutline, IoMdClose } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCart } from "../redux/slices/cartSlice";
+import { GiChainedHeart } from "react-icons/gi";
+import BaseText from "../Components/BaseText";
 
 const page = () => {
   const data = useSelector((state: any) => state.addToCart.addToCart);
-
-  console.log("data", data);
+  const dispatch = useDispatch();
 
   return (
-    <>
-      <PageWrapper>
-        <div className="relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {data.map((item: any, index: number) => {
+    <PageWrapper>
+      <div className="relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {data.length > 0 ? (
+          data.map((item: any, index: number) => {
             return (
               <>
                 <div
@@ -42,9 +43,9 @@ const page = () => {
                   </div>
                   <div
                     className="absolute right-3 top-2 bg-white rounded-full p-1 cursor-pointer"
-                    //   onClick={() => addToFavorites(item)}
+                    onClick={() => dispatch(removeCart(item))}
                   >
-                    <CiHeart size={16} />
+                    <IoMdClose size={16} />
                   </div>
 
                   <div className="p-4">
@@ -66,10 +67,20 @@ const page = () => {
                 </div>
               </>
             );
-          })}
-        </div>
-      </PageWrapper>
-    </>
+          })
+        ) : (
+          <div className="flex flex-col items-center justify-center min-h-[50vh]">
+            <BaseText
+              size="text-xl"
+              weight="font-bold"
+              additionalClasses="mb-2"
+            >
+              No Items in your Cart
+            </BaseText>
+          </div>
+        )}
+      </div>
+    </PageWrapper>
   );
 };
 
