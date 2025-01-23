@@ -2,19 +2,18 @@
 import React from "react";
 import PageWrapper from "../Components/PageWrapper";
 import Image from "next/image";
-import { IoIosAddCircleOutline, IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCart } from "../redux/slices/cartSlice";
-import { GiChainedHeart } from "react-icons/gi";
 import BaseText from "../Components/BaseText";
 
-const page = () => {
-  const data = useSelector((state: any) => state.addToCart.addToCart);
+const CartPage = () => {
   const dispatch = useDispatch();
+  const data = useSelector((state: any) => state.addToCart.addToCart);
 
   return (
     <PageWrapper>
-      <div className="relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.length > 0 ? (
           data.map((item: any, index: number) => {
             return (
@@ -59,17 +58,12 @@ const page = () => {
                       {item.category}
                     </p>
                   </div>
-                  <div className="absolute bottom-14 right-3">
-                    <button>
-                      <IoIosAddCircleOutline className="w-7 h-7 text-white font-bold" />
-                    </button>
-                  </div>
                 </div>
               </>
             );
           })
         ) : (
-          <div className="flex flex-col items-center justify-center min-h-[50vh]">
+          <div className="flex items-center justify-center text-center">
             <BaseText
               size="text-xl"
               weight="font-bold"
@@ -84,4 +78,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default CartPage;

@@ -23,12 +23,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const data = useSelector((state: any) => state.addToCart.addToCart);
-  const count = data.length;
+  const cartItems = useSelector(
+    (state: any) => state.addToCart.addToCart.length
+  );
+  const favoriteItems = useSelector(
+    (state: any) => state.favorites.favoritesItem.length
+  );
 
-  const fav = useSelector((state: any) => state.favorites.favoritesItem);
-
-  const favouriteCount = fav.length;
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -143,30 +144,26 @@ const Navbar = () => {
               )}
             </div> */}
             </div>
-            <Link href={"/favorites"}>
-              <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+            <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+              <Link href={"/favorites"}>
                 <AiOutlineHeart size={22} />
-                {favouriteCount > 0 ? (
-                  <div className="absolute left-6 top-4 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
-                    {favouriteCount}
+                {favoriteItems > 0 && (
+                  <div className="absolute left-5 top-1 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
+                    {favoriteItems}
                   </div>
-                ) : (
-                  ""
                 )}
-              </div>
-            </Link>
-            <Link href={"/cart-page"}>
-              <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+              </Link>
+            </div>
+            <div className="relative hover:bg-gray-100 cursor-pointer py-2 px-2 rounded-full">
+              <Link href={"/cart-page"}>
                 <HiOutlineShoppingBag size={20} />
-                {count > 0 ? (
-                  <div className="absolute left-6 top-4 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
-                    {count}
+                {cartItems > 0 && (
+                  <div className="absolute left-5 top-1 w-4 h-4 text-xs bg-red-500 text-white rounded-full flex justify-center items-center">
+                    {cartItems}
                   </div>
-                ) : (
-                  ""
                 )}
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
