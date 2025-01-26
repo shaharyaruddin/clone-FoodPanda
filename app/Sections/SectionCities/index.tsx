@@ -12,6 +12,7 @@ import {
 } from "@/app/redux/slices/favouriteSlice";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { addItems } from "@/app/redux/slices/cartSlice";
+import Loader from "@/app/Components/Loader";
 
 const API_URL = "https://dummyjson.com/recipes";
 
@@ -48,7 +49,7 @@ const SectionCities = ({ params }: { params?: string }) => {
 
   const handleAddToCart = (item: any) => {
     dispatch(addItems(item));
-    console.log('added items')
+    console.log("added items");
   };
 
   return (
@@ -119,9 +120,9 @@ const SectionCities = ({ params }: { params?: string }) => {
                 >
                   {/* Toggle icons based on favorite status */}
                   {isFavorite(item) ? (
-                    <IoMdHeart size={16} /> 
+                    <IoMdHeart size={16} />
                   ) : (
-                    <CiHeart size={16} /> 
+                    <CiHeart size={16} />
                   )}
                 </div>
                 <div className="p-4">
@@ -134,7 +135,7 @@ const SectionCities = ({ params }: { params?: string }) => {
                   <p className="text-sm text-gray-600 mt-1">{item.category}</p>
                 </div>
                 <div className="absolute bottom-14 right-3">
-                  <button onClick={()=>handleAddToCart(item)}>
+                  <button onClick={() => handleAddToCart(item)}>
                     <IoIosAddCircleOutline className="w-7 h-7 text-white font-bold" />
                   </button>
                 </div>
@@ -144,7 +145,9 @@ const SectionCities = ({ params }: { params?: string }) => {
             <p className="text-gray-500">No item Found</p>
           )
         ) : (
-          <p className="text-center text-gray-500">Loading...</p>
+          <div className="text-center text-gray-500">
+            <Loader />
+          </div>
         )}
       </div>
     </div>
