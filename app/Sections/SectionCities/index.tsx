@@ -16,25 +16,20 @@ import Loader from "@/app/Components/Loader";
 
 const API_URL = "https://dummyjson.com/recipes";
 
-const SectionCities = ({ params }: { params?: string }) => {
-  const [data, setData] = useState([]);
+interface ISectionCities {
+  params?: string;
+data?: any;
+}
+
+
+const SectionCities = (
+  { params, data }: ISectionCities
+) => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const favorites = useSelector((state: any) => state.favorites.favoritesItem);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const data = await fetch(API_URL);
-        const res = await data.json();
-        setData(res.recipes);
-      } catch (error) {
-        console.log("Error Fetching data", error);
-      }
-    };
-    getData();
-  }, []);
 
   const searchingData = data.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
