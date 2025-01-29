@@ -14,22 +14,16 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { addItems } from "@/app/redux/slices/cartSlice";
 import Loader from "@/app/Components/Loader";
 
-const API_URL = "https://dummyjson.com/recipes";
-
 interface ISectionCities {
   params?: string;
-data?: any;
+  data?: any;
 }
 
-
-const SectionCities = (
-  { params, data }: ISectionCities
-) => {
+const SectionCities = ({ params, data }: ISectionCities) => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const favorites = useSelector((state: any) => state.favorites.favoritesItem);
-
 
   const searchingData = data.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())

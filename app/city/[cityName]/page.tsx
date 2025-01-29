@@ -5,15 +5,15 @@ import SectionFaq from "@/app/Sections/SectionFaq";
 import SectionHero from "@/app/Sections/SectionHero";
 import { notFound } from "next/navigation";
 
+const API_URL = "https://dummyjson.com/recipes";
+
 const page = async ({ params }: any) => {
   const { cityName } = params;
 
-  // Validate city name
   const existingCities = cityList.map((item) => item.name.toLowerCase());
   if (!existingCities.includes(cityName.toLowerCase())) {
     return notFound();
   }
-
   // Fetch API data
   let data = [];
   try {
@@ -34,3 +34,14 @@ const page = async ({ params }: any) => {
 };
 
 export default page;
+
+export const generateStaticParams = async () => {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  return data.recipes.map((item: any) => {
+    return {
+      cityName: item.id.toString(),
+    };
+  });
+};
