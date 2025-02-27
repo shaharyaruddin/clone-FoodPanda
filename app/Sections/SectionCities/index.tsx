@@ -20,26 +20,27 @@ interface ISectionCities {
 }
 
 const SectionCities = ({ params, data }: ISectionCities) => {
+  console.log('api data', data)
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const favorites = useSelector((state: any) => state.favorites.favoritesItem);
 
-  const searchingData = data.filter((item: any) =>
-    item.name.toLowerCase().includes(query.toLowerCase())
-  );
+  // const searchingData = data.filter((item: any) =>
+  //   item.name.toLowerCase().includes(query.toLowerCase())
+  // );
 
-  const isFavorite = (item: any) =>
-    favorites.some((fav: any) => fav.id === item.id);
-  const addToFavorites = (item: any) => {
-    dispatch(addFavorites(item));
-    console.log("object");
-  };
+  // const isFavorite = (item: any) =>
+  //   favorites.some((fav: any) => fav.id === item.id);
+  // const addToFavorites = (item: any) => {
+  //   dispatch(addFavorites(item));
+  //   console.log("object");
+  // };
 
-  const handleAddToCart = (item: any) => {
-    dispatch(addItems(item));
-    console.log("added items");
-  };
+  // const handleAddToCart = (item: any) => {
+  //   dispatch(addItems(item));
+  //   console.log("added items");
+  // };
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 my-8">
@@ -61,7 +62,7 @@ const SectionCities = ({ params, data }: ISectionCities) => {
         </BaseText>
       </div>
 
-      <div className="py-6">
+      {/* <div className="py-6">
         <input
           type="search"
           value={query}
@@ -69,35 +70,35 @@ const SectionCities = ({ params, data }: ISectionCities) => {
           placeholder="Search in menu"
           className="border rounded-2xl bg-gray-100 w-56 px-3 py-1 outline-none focus:outline-blue-800"
         />
-      </div>
+      </div> */}
 
       <div className="relative mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data?.length > 0 ? (
-          searchingData.length > 0 ? (
-            searchingData.map((item: any) => (
+          // searchingData.length > 0 ? (
+            data.map((item: any) => (
               <div
                 key={item.id}
                 className="relative flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
               >
                 <div className="relative">
                   <Image
-                    src={item.image}
-                    alt={item.name}
+                    src={item.imagePath}
+                    alt={item.title}
                     className="w-full h-40 object-cover"
                     width={400}
                     height={200}
                   />
                   {/* Badges */}
-                  <div className="absolute top-2 left-2 space-y-1">
+                  {/* <div className="absolute top-2 left-2 space-y-1">
                     <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
                       Up to {item.cookTimeMinutes}% off
                     </span>
                     <span className="bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
                       Welcome gift: free delivery
                     </span>
-                  </div>
+                  </div> */}
                 </div>
-                <div
+                {/* <div
                   className="absolute right-3 top-2 bg-white rounded-full p-1 cursor-pointer"
                   onClick={() => {
                     if (isFavorite(item)) {
@@ -106,33 +107,33 @@ const SectionCities = ({ params, data }: ISectionCities) => {
                       dispatch(addFavorites(item)); // Add to favorites
                     }
                   }}
-                >
+                > */}
                   {/* Toggle icons based on favorite status */}
-                  {isFavorite(item) ? (
+                  {/* {isFavorite(item) ? (
                     <IoMdHeart size={16} />
                   ) : (
                     <CiHeart size={16} />
-                  )}
-                </div>
+                  )} */}
+                {/* </div> */}
                 <div className="p-4">
                   <div className="flex justify-between items-center">
-                    <p className="font-bold text-gray-800">{item.name}</p>
+                    <p className="font-bold text-gray-800">{item.title}</p>
                     <p className="text-sm font-semibold text-orange-500">
                       {item.rating} ⭐
                     </p>
                   </div>
                   <p className="text-sm text-gray-600 mt-1">{item.category}</p>
                 </div>
-                <div className="absolute bottom-14 right-3">
+                {/* <div className="absolute bottom-14 right-3">
                   <button onClick={() => handleAddToCart(item)}>
                     <IoIosAddCircleOutline className="w-7 h-7 text-white font-bold" />
                   </button>
-                </div>
+                </div> */}
               </div>
             ))
-          ) : (
-            <p className="text-gray-500">No item Found</p>
-          )
+          // ) : (
+          //   <p className="text-gray-500">No item Found</p>
+          // )
         ) : (
           <div className="text-center text-gray-500">
             <Loader />
@@ -140,6 +141,7 @@ const SectionCities = ({ params, data }: ISectionCities) => {
         )}
       </div>
     </div>
+    // <div></div>
   );
 };
 
