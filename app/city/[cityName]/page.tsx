@@ -1,12 +1,11 @@
 import PageWrapper from "@/app/Components/PageWrapper";
-import SectionCities from "@/app/Sections/SectionCities";
-import SectionFaq from "@/app/Sections/SectionFaq";
 import SectionHero from "@/app/Sections/SectionHero";
+import SectionFaq from "@/app/Sections/SectionFaq";
+import SectionRestaurants from "@/app/Sections/SectionRestaurants";
 import { notFound } from "next/navigation";
 
 // generateStaticParams is only used for dynamic routes in Next.js.
 // for example if route is  [cityname], then generateStaticParams should return { cityname: value }
-
 export const generateStaticParams = async () => {
   const fetchCity = await fetch(`${process.env.CITY_API}`);
   const response = await fetchCity.json();
@@ -36,7 +35,7 @@ const CityName = async ({ params }: any) => {
   return (
     <PageWrapper>
       <SectionHero />
-      <SectionCities params={cityName} data={data} />
+      <SectionRestaurants params={cityName} data={data} />
       <SectionFaq />
     </PageWrapper>
   );

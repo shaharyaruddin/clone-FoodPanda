@@ -13,17 +13,16 @@ import {
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { addItems } from "@/app/redux/slices/cartSlice";
 import Loader from "@/app/Components/Loader";
+import Link from "next/link";
 
 interface ISectionCities {
   params?: string;
   data?: any;
 }
 
-const SectionCities = ({ params, data }: ISectionCities) => {
-  console.log('api data', data)
+const SectionRestaurants = ({ params, data }: ISectionCities) => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-
   const favorites = useSelector((state: any) => state.favorites.favoritesItem);
 
   // const searchingData = data.filter((item: any) =>
@@ -76,7 +75,7 @@ const SectionCities = ({ params, data }: ISectionCities) => {
         {data?.length > 0 ? (
           // searchingData.length > 0 ? (
             data.map((item: any) => (
-              <div
+              <Link href={`${params}/${item.title}`}
                 key={item.id}
                 className="relative flex flex-col rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm transition-transform hover:scale-105 hover:shadow-lg"
               >
@@ -129,7 +128,7 @@ const SectionCities = ({ params, data }: ISectionCities) => {
                     <IoIosAddCircleOutline className="w-7 h-7 text-white font-bold" />
                   </button>
                 </div> */}
-              </div>
+              </Link>
             ))
           // ) : (
           //   <p className="text-gray-500">No item Found</p>
@@ -145,4 +144,4 @@ const SectionCities = ({ params, data }: ISectionCities) => {
   );
 };
 
-export default SectionCities;
+export default SectionRestaurants;
